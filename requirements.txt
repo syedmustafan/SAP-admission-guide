@@ -90,7 +90,7 @@ MarkupSafe==1.1.1
 #mccabe
 #mccabe==0.6.1
 #menuinst==1.4.16
-menuinst
+#menuinst
 mistune==0.8.4
 mock==3.0.5
 mysqlclient==2.0.3
