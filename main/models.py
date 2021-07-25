@@ -19,7 +19,7 @@ class UniRank(models.Model):
     fee = models.CharField(max_length=100)   
     relScore = models.FloatField()   
     def __str__(self):
-        return self.uniname + self.deps + self.Ranking 
+        return self.uniname + " " + self.deps + " " + self.Ranking 
 
 
 
