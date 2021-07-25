@@ -17,7 +17,9 @@ class UniRank(models.Model):
     city = models.CharField(max_length=100)
     deps = models.CharField(max_length=100)
     fee = models.CharField(max_length=100)   
-    relScore = models.FloatField()    
+    relScore = models.FloatField()   
+    def __str__(self):
+        return self.uniname 
 
 
 
