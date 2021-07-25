@@ -74,13 +74,14 @@ def profile(request):
     return render(request, 'Load.html', context=resty)  
 
 def contactus(request):
-    if request.method == "POST":
+    contact_dict = {}
+    if request.methods=="POST":
         name = request.POST['name']
         email = request.POST['email']
-        question = request.POST['question']
+        question = request.POST['ques']
 
         Contact.objects.create(name=name, email=email, question=question)
-
+        contact_dict['msg'] = "Your query has been recorded"
         subject = 'SAP - Query Recorded'
         message = "Hi, Thank you for contacting us. We are looking into your query and will contact you ASAP"
         send_mail(
@@ -91,6 +92,6 @@ def contactus(request):
                 fail_silently=False
         )
 
-        return render(request, 'Contact.html')
+        return render(request, 'Contact.html', context=contact_dict)
 
 
