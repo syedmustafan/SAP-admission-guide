@@ -13,5 +13,4 @@ urlpatterns = [
     path('predictions', views.prediction, name='predictions'),
     path('mbaRating', views.mbaRating, name='mbaRating'),
     path('predRes', views.predRes, name='predRes'),
-    path('contact', views.contact, name="contact"),
 ]

@@ -10,6 +10,6 @@ urlpatterns = [
     path('verified', views.registeruser, name="registeruser"),
     path('load', views.profile, name="load"),
     path('contact', views.contact, name="contact"),
-    path('contact-us', views.contactus, "addQues"),
+    #path('contact-us', views.contactus, "addQues"),
 
 ]

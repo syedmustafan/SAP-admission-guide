@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from .models import UniRank
 from . import predictions
-def about(request):
-    return render(request, 'About.html')
-
 def home(request):
     return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'About.html')
 
 def mba(request):
     return render(request, 'Mba.html')
@@ -116,5 +116,4 @@ def predRes(request):
             return render(request, 'PredResults.html', context=unidep)
     return render(request, 'PredResults.html', {'unidep': unidep})
     
-def contact(request):
-    return render(request, 'Contact.html')    
+   
