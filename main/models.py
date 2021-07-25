@@ -9,7 +9,7 @@ class Account(models.Model):
     status = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.name  
 
 class UniRank(models.Model):
     Ranking = models.CharField(max_length=200) 
@@ -19,7 +19,7 @@ class UniRank(models.Model):
     fee = models.CharField(max_length=100)   
     relScore = models.FloatField()   
     def __str__(self):
-        return self.uniname 
+        return self.uniname + self.deps + self.Ranking 
 
 
 
