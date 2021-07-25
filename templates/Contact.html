@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-4">
-                <form action="{{ "addQues" }}" method="post">
+                <form action="{% url "addQues" %}" method="post">
                     <div class="form-group">
                         <label class="contlabel" for="name">Full Name:</label>
                         <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required>
@@ -39,7 +39,7 @@
                     <div class="form-group">
 
                         <label class="contlabel" for="ques">Question:</label>
-                        <textarea PLACEHOLDER="Your Question" name="ques"  class="form-control" style="height: 100px" id="ques"  required>
+                        <textarea name="question" PLACEHOLDER="Your Question" name="ques"  class="form-control" style="height: 100px" id="ques"  required>
                         </textarea>
                     </div>
 

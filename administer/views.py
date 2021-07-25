@@ -3,6 +3,7 @@ from main.models import Account
 from django.db.models import Q
 from django.core.mail import send_mail
 from django.conf import settings
+from administer.models import Contact
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -30,6 +31,9 @@ def logout(request):
 
 def regindex(request):
     return render(request, 'register.html')
+
+def contact(request):
+    return render(request, 'Contact.html')     
 
 def registeruser(request):
     cont = {}
@@ -67,8 +71,26 @@ def profile(request):
         resty = {
             "c" : c
             }
-    return render(request, 'Load.html', context=resty)     
+    return render(request, 'Load.html', context=resty)  
 
+def contactus(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        email = request.POST['email']
+        question = request.POST['question']
 
+        Contact.objects.create(name=name, email=email, question=question)
+
+        subject = 'SAP - Query Recorded'
+        message = "Hi, Thank you for contacting us. We are looking into your query and will contact you ASAP"
+        send_mail(
+                subject,
+                message,
+                settings.EMAIL_HOST_USER,
+                [email],
+                fail_silently=False
+        )
+
+        return render(request, 'Contact.html')
 
 
