@@ -1,0 +1,373 @@
+ {% include 'base.html' %}
+
+    <div class="container-fluid body" style="width: 100%;height: 100%">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="   text-center">Compare Colleges</h2>
+            </div>
+
+            <div >
+
+            </div>
+            <div class="col-md-2  ">
+
+            </div>
+
+            <div class="col-md-3 comp"  >
+                <h4>Category &nbsp; 1</h4>
+                {% csrf_token %}
+                <input class="form-control uni1"  autoComplete="on" list="suggestions"
+                       placeholder="Search Colleges"/>
+                
+                <datalist name="data" id="suggestions">
+                {% for Results in uni%}
+                    <option>{{ Results }}</option>
+                {% endfor %}
+                </datalist>
+
+
+            </div>
+            <div class="col-md-3 comp"  >
+                <h4>Category &nbsp; 2</h4>
+                <input class="form-control uni2"  autoComplete="on" list="suggestions" placeholder="Search Colleges" disabled/>
+                <br>
+
+
+            </div>
+
+             <div class="col-md-3 comp"  >
+                <h4>Category &nbsp; 3</h4>
+                <input class="form-control uni3" autoComplete="on" list="suggestions" placeholder="Search Colleges " disabled
+                       />
+
+
+            </div>
+
+            <br>
+
+    <div class="col-md-12" style="margin-top: 4%"></div>
+<div   class="col-md-2  ">
+
+            </div>
+        <div class="col-md-6">
+            <h5>If You Want Specific Different Select:</h5>
+        </div>
+
+
+        <div   class="col-md-2  ">
+            <div class="form-check">
+        <label class="form-check-label" for="check1">
+        <input type="checkbox" class="form-check-input" id="check1" name="option1" value="Ranking" disabled >Ranking && FEE>
+        {% csrf_token %}
+        </label>
+        </div>
+        </div>
+
+
+<div   class="col-md-2  ">
+
+            </div>
+        <div   class="col-md-2  ">
+
+            </div>
+
+
+
+            <div class="col-md-3 comparison comp" hidden>
+
+                <h4 class = " rank1 gaps">Ranking:</h4>
+                <h5 id="rank" class = "gaps"></h5>
+
+                <h4 class = "rank2 gaps">Name:</h4>
+                <h5 id="name" class = "gaps"></h5>
+
+                <h4 class = "rank1 city gaps">City:</h4>
+                <h5 id="city" class = "city gaps"></h5>
+
+                <h4 class = "rank2 gaps city">Department:</h4>
+                <h5 id="deps" class = " gaps city"></h5>
+
+                <h4 class = "fee rank1  fee1 gaps">Expected Fee:</h4>
+                <h5 id="fees" class = "gaps fee"></h5>
+
+                <h4 class = "rank2 gaps ">Relative Score:</h4>
+                <h5 id="rss" class = "gaps"> </h5>
+            </div>
+        <div class="col-md-3 comparisons comp" hidden>
+                <h4 class = " rank1 gaps">Ranking:</h4>
+                <h5 id="ranks" class = "gaps"></h5>
+
+
+                <h4 class = "rank2 gaps">Name:</h4>
+                <h5 id="names" class = "gaps"></h5>
+
+                <h4 class = "rank1 gaps city">City:</h4>
+                <h5 id="citys" class = "gaps city"></h5>
+
+                <h4 class = "rank2 gaps city">Department:</h4>
+                <h5 id="depss" class = "gaps city"></h5>
+
+                <h4 class = "fee rank1 fee2 gaps">Expected Fee:</h4>
+                <h5 id="feess" class = "gaps fee"></h5>
+
+                <h4 class = " rank2 gaps">Score</h4>
+                <h5 id="rsss" class = "gaps"> </h5>
+            </div>
+        <div class="col-md-3 comparisonss comp" hidden>
+                <h4 class = "rank1 gaps">Ranking:</h4>
+                <h5 id="rankss" class = "gaps"></h5>
+
+
+                <h4 class = " rank2 gaps">Name:</h4>
+                <h5 id="namess" class = " gaps"></h5>
+
+                <h4 class = "rank1  gaps city ">City:</h4>
+                <h5 id="cityss" class = "city gaps"></h5>
+
+                <h4 class = "rank2 gaps city">Department:</h4>
+                <h5 id="depsss" class = "gaps city"></h5>
+
+                <h4 class = "rank1 fee3 gaps fee">Expected Fee:</h4>
+                <h5 id="feesss" class = "gaps fee"></h5>
+
+                <h4 class = "rank2 gaps">Score</h4>
+                <h5 id="rssss" class = " gaps"> </h5>
+            </div>
+
+
+        </div>
+    </div>
+
+ <div id="res">
+
+ </div>
+ <script>
+     $(document).ready(function() {
+         if($(".uni1").val()){
+             alert("hello");
+         }
+
+
+
+
+         var re;
+         $(".uni1").blur(function () {
+          $('#rank').empty();
+           $('#name').empty();
+           $('#city').empty();
+           $('#deps').empty();
+           $('#fees').empty();
+           $('#rss').empty();
+
+
+
+
+        var val = $(this).val();
+        //console.log(val);
+        var re
+        $.ajax({
+            var csrftoken = '{{ csrf_token }}'
+            type: "POST",
+            headers:{'X-CSRFToken':csrftoken},
+            
+            url :"{% url 'main:compareRes' %}",
+            data : {'data':val},
+            success: function(data) {
+            /*var results = JSON.stringify(data).split("]")
+                console.log(results)
+            $("#res").val(results)*/
+
+            var results = JSON.stringify(data).replace("[[","").replace("]]","").replace('"','').replace('"','').replace('"','').replace('"','').replace('"','').replace('"','').split(",");
+
+            var length = results.length;
+           /* for(var i=0; i<length;i++ ) {
+                console.log(length);
+                $('#res').append(results[i]+'<br>');
+
+
+            }*/
+           $('#rank').append(results[1]);
+           $('#name').append(results[2]);
+           $('#city').append(results[3]);
+           $('#deps').append(results[4]);
+           $('#fees').append(results[5]);
+           $('#rss').append(results[6]);
+
+           $(".comparison").attr("hidden",false);
+           $(".uni2").attr("disabled",false);
+
+
+
+
+
+            /*$.each(data,function (key,value) {
+                 re +='<p>'+data[key]+'</p>'
+                 $('#res').append(re);
+            });*/
+
+
+        },
+        error: function(error){
+            console.log("Here is the error res: " + JSON.stringify(error));
+        }
+
+
+        });
+
+
+
+    });
+          $(".uni2").blur(function () {
+
+
+          $('#ranks').empty();
+           $('#names').empty();
+           $('#citys').empty();
+           $('#depss').empty();
+           $('#feess').empty();
+           $('#rsss').empty();
+
+
+
+        var val = $(this).val();
+        //console.log(val);
+
+        $.ajax({
+            var csrftoken = '{{ csrf_token }}'
+            type: "POST",
+            headers:{'X-CSRFToken':csrftoken},
+            url :"{% url 'main:compareRes' %}",
+            data : {'data':val},
+            success: function(data) {
+            /*var results = JSON.stringify(data).split("]")
+                console.log(results)
+            $("#res").val(results)*/
+
+            var results = JSON.stringify(data).replace("[[","").replace("]]","").replace('"','').replace('"','').replace('"','').replace('"','').replace('"','').replace('"','').split(",");
+
+           $('#ranks').prepend(results[1]);
+           $('#names').append(results[2]);
+           $('#citys').append(results[3]);
+           $('#depss').append(results[4]);
+           $('#feess').append(results[5]);
+           $('#rsss').append(results[6]);
+
+           $(".comparisons").attr("hidden",false);
+           $(".uni3").attr("disabled",false);
+
+            /*$.each(data,function (key,value) {
+                 re +='<p>'+data[key]+'</p>'
+                 $('#res').append(re);
+            });*/
+
+
+        },
+        error: function(error){
+            console.log("Here is the error res: " + JSON.stringify(error));
+        }
+
+
+        });
+
+
+
+    });
+      $(".uni3").blur(function () {
+         var val = $(this).val();
+          $('#rankss').empty();
+           $('#namess').empty();
+           $('#cityss').empty();
+           $('#depsss').empty();
+           $('#feesss').empty();
+           $('#rssss').empty();
+        //console.log(val);
+
+        $.ajax({
+            type: "POST",
+            url :"{% url 'main:compareRes' %}",
+            data : {'data':val},
+            success: function(data) {
+            /*var results = JSON.stringify(data).split("]")
+                console.log(results)
+            $("#res").val(results)*/
+
+            var results = JSON.stringify(data).replace("[[","").replace("]]","").replace('"','').replace('"','').replace('"','').replace('"','').replace('"','').replace('"','').replace(']',"").split(",");
+
+            $('#rankss').prepend(results[1]);
+           $('#namess').append(results[2]);
+           $('#cityss').append(results[3]);
+           $('#depsss').append(results[4]);
+           $('#feesss').append(results[5]);
+           $('#rssss').append(results[6]);
+
+           $(".comparisonss").attr("hidden",false);
+           $('#check1').attr("disabled",false);
+           $('#check2').attr("disabled",false);
+
+            /*$.each(data,function (key,value) {
+                 re +='<p>'+data[key]+'</p>'
+                 $('#res').append(re);
+            });*/
+
+
+        },
+        error: function(error){
+            console.log("Here is the error res: " + JSON.stringify(error));
+        }
+
+
+        });
+
+
+
+    });
+
+      $('#check1 ').click(function() {
+          var uni1 = $(".uni1").val();
+          var uni2 = $(".uni2").val();
+          var uni3 = $(".uni3").val();
+
+    // this will contain a reference to the checkbox
+            if (this.checked ) {
+                $(".city").attr("hidden",true);
+
+
+
+                 }
+
+            else {
+                $(".city").attr("hidden",false);
+
+
+
+                console.log("un Checked")
+        // the checkbox is now no longer checked
+            }
+
+        });
+      $('#check2 ').click(function() {
+
+
+    // this will contain a reference to the checkbox
+            if (this.checked) {
+                $(".city").attr("hidden",true);
+                $(".fee").attr("hidden",false);
+
+
+                 }
+            else {
+                console.log("un Checked")
+        // the checkbox is now no longer checked
+            }
+        });
+
+
+
+
+        });
+
+
+
+
+ </script>
+

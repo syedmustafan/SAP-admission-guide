@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<title>Flask App</title>
+</head>
+<body>
+
+
+	<form action="{{url_for('preds')}}" method="post"> 
+		University<input type="text" name="uni" value="1" readonly> <br>
+		Department<input type="text" name="dep" value="10" readonly><br>
+		YOP<input type="number" name="yop"><br>
+		Matric <input type="number" name="matric"><br>
+		FSC <input type="number" name="fsc"><br>
+		ET <input type="number" name="et"><br>
+		Deduction <input type="number" name="deduction"><br>
+		Merit <input type="number" name="merit"><br>
+
+		<button type="submit">Submit</button>
+
+	</form>
+	 {% if Errors %}
+	 	<h1>{{Errors}} </h1>
+	 {% elif unis ==0 %}
+<div class="container-fluid">
+	 		<div class="row">
+
+	 {% else  %}
+	 	{% for key, value in unis.items() %}
+	 	
+	 	<div class="col-md-6">
+	 		<h1>You Got Admission in {{key}}</h1>
+	 		<h1>In Department: </h1>
+	 		{% for x in value %}
+	 		<h2>{{x}}</h2>
+	 		{% endfor %}
+	 		</div>
+	 			
+	 		
+
+	 	{% endfor%}
+	 {% endif %}
+
+	 		</div>
+	 	</div>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+.Border{
+border: 1px solid slategrey;
+
+}
+.form-control{
+    margin-top: 5%;
+    width: 50%;
+}
+.btn{
+    float: right;
+    margin: 5%;
+}
+
+.look{
+    border: 1px solid crimson;
+
+}
+
+.look h1,h4{
+    color: #5b6574;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.guides{
+    margin-top: 5%;
+    color:saddlebrown;
+    margin-left: 3%;
+
+}
+.guide{
+    margin-top: 5%;
+    color: crimson;
+}

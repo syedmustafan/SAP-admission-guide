@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>SAPS</title>
+<link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+<script  src="{% static 'bootstrap.js' %}"></script>
+<script src="{% static 'jquery.js'  %}"></script>
+<script  src="{% static 'preloader.js' %}"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+<script  src="{% static 'TextArea.js' %}"></script>
+
+
+<link rel="stylesheet" href="{% static 'style.css'  %}">
+<link rel="stylesheet" href="{% static 'home.css' %}">
+
+<link rel="stylesheet" href="{% static 'compare.css' %}">
+<link rel="stylesheet" href="{% static 'Prediction.css' %}">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+
+
+
+
+</head>
+<body>
+    <div id="preloader">
+        <!--preloader.gif-->
+        <div id="status"  >
+            &nbsp;
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-md " style="width: 100%">
+        <a href="{% url 'main:home'  %}" class="navbar-brand" style="color: crimson"><h4 style="margin-top: 4%">SAPS</h4></a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span  class="navbar-toggler-icon " ></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav" style="width: 80%">
+                {% if request.session.loggedin %}
+                <a href="{% url 'main:compare' %}"  class="nav-item nav-link">Compare Colleges</a>
+                <a href="{% url 'main:predictions' %}"   class="nav-item nav-link">Predict Admission Chances</a>
+                <a href="{% url 'main:mbaRating' %}"   class="nav-item nav-link">Top Colleges</a>
+                <a href="{% url 'main:about' %}"   class="nav-item nav-link">About us</a>
+                <a href="{% url 'main:contact' %}"   class="nav-item nav-link">Contact us</a>
+                
+                 {% else %}
+                <a href="{% url 'main:mbaRating' %}"   class="nav-item nav-link">Top Colleges</a>
+                <a href="{% url 'main:about' %}"   class="nav-item nav-link">About us</a>
+                <a href="{% url 'main:contact' %}"   class="nav-item nav-link">Contact us</a>
+                                {% endif %}
+
+            </div>
+            <div class="navbar-nav ml-auto" style="width: 15%">
+                {% if request.session.loggedin %} 
+                 <a href="{{ 'Ask' }}"   class="nav-item nav-link">Ask</a>
+                <a href="{% url 'administer:load' %}"  class="nav-item nav-link">Profile</a>
+                <a href="{% url 'administer:logout' %}"  class="nav-item nav-link">Logout</a>
+
+
+
+              {% else %}
+                 <a href="{% url 'administer:regindex' %}"   class="nav-item nav-link">Register</a>
+                 <a href="{% url 'administer:index' %}"   class="nav-item nav-link">Login</a>
+
+               {% endif %}
+
+            </div>
+</div>
+    </nav>

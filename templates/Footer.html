@@ -1,0 +1,49 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'home.css' %}">
+
+<script src="{% static 'bootstrap.js' %}"></script>
+<script src="{% static 'jquery.js' %}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="{% static 'home.css' %}">
+
+
+<div class="container-fluid footer" >
+    <div class="row">
+        <div class="col-md-4 footers">
+            <h1>Any Questions </h1>
+            <h4 class="fa fa-map-marker">&nbsp; &nbsp; Virtual University, Lahore</h4>
+            <br>
+            <h4 class="fa fa-phone">&nbsp; &nbsp; 03074727619</h4>
+            <br>
+            <h4 class="fa fa-envelope">&nbsp; &nbsp; bc180409060@vu.ed.pk</h4>
+        </div>
+
+        <div class="col-md-4 footers">
+            <h1>Helpful Links</h1>
+            <br>
+            <a href="{% url 'main:home' %}" class="tags"><p class="tags">&rarr;  Home</p></a>
+            <br>
+            <a href="#" class="tags"><p class="tags">&rarr; Contact Us</p></a>
+            <br>
+            <a href="{% url 'main:about' %}" class="tags"><p class="tags">&rarr; About Us</p></a>
+            {% if request.session.loggedin %}
+            <br>
+            <a href="{% url 'main:predictions' %}" class="tags"><p class="tags">&rarr; Predict</p></a>
+            {% endif %}
+        </div>
+
+        
+        <div class="col-md-4 footers2">
+            <h1>Follow us On</h1>
+            <a href="#" class="fa fa-facebook"></a>
+                        <a href="#" class=" fa fa-instagram"></a>
+
+                        <a href="#" class="fa fa-twitter"></a>
+
+                        <a href="#" class="fa fa-youtube"></a>
+
+        </div>
+    </div>
+</div>

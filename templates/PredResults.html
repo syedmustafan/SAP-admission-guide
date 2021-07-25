@@ -1,0 +1,32 @@
+{% include 'base.html' %}
+
+	  <div class="container" style="margin-top:5%;" >
+		{% if unidep %}
+	  		  		<h1 class="card card-body   text-center" style="color: crimson;text-align: center;">You Are Eligible To Apply In<br></h1>
+
+	  	<div class="row">
+	  	    
+	  		{% for key, value in unidep.items %}
+
+			
+	  		<div class="col-md-4 look"  style="margin-top: 2%">
+
+
+	 			<h1 style="margin-bottom: 10%;margin-top: 10%">University:{{value}}</h1>
+
+				 <h4 style="margin-bottom: 10%;margin-top: 10%" >Department:{{key}}</h4>
+	 
+	  		</div>
+	  		 
+	  		{% endfor %}
+	  	
+	 {% elif msg  %} 
+	  			<h1>{{msg}}</h1> 
+	  	{% endif %}
+
+
+	  	</div>	
+	  </div>
+	  	 
+</body>
+</html>

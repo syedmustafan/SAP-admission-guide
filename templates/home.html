@@ -1,0 +1,96 @@
+ {% load static %}
+ {% include 'base.html' %}
+ <!--      Navbar Ends Here Now Rating Section Starts        -->
+ <!--Featuring Top Schools -->
+
+
+ {% include 'Carousel.html' %}
+
+
+ <div class="container-fluid">
+     <div class="row">
+
+
+         <div class="col-md-3 rank1"  >
+             <h5>Quaid-e-Azam University: <br> Islamabad</h5>
+             <p>#1 University of Pakistan</p>
+         </div>
+         <div class="col-md-3 rank2"  >
+             <h5>Institute of Business Administration (IBA): Karachi</h5>
+
+             <p>#1 Business School of Pakistan</p>
+         </div>
+         <div class="col-md-3 rank1">
+             <h5>Aga Khan University:<br>Karachi</h5>
+             <p>#1 Medical University of Pakistan</p>
+         </div>
+
+         <div class="col-md-3 rank2">
+             <h5>National University of Sciences & Technology (NUST): Islamabad </h5>
+             <p>#1 Engineering University of Pakistan</p>
+         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+         <div class="col-md-12 text-center size  " style="margin-top:0;margin-bottom: 8%">
+
+             <br>
+
+             <a class="active coldz" style="text-decoration: none;" href="{{'home' }}">Medical </a>
+
+             <a href="{{ 'eng' }}" style="text-decoration: none;" class="coldz">Engineering </a>
+             <a href="{{ 'mba' }}" style="text-decoration: none;" class="coldz">MBA </a>
+             <a href="{{ 'arts' }}" style="text-decoration: none;" class="coldz">Arts </a>
+         </div>
+
+
+
+         <div class="col-md-3 text-center " style="text-align: center;margin-left: 4%;border: none">
+             <a href="" style="text-decoration: none;color: black">
+                 <h5>Medical Rating</h5>
+                 <img src="{% static 'rating.png' %}" width="50%" alt="NO image Available">
+                 <p>Top Ranked BBA Universities of Pakistan</p>
+             </a>
+
+         </div>
+         <div class="col-md-1"></div>
+         <div class="col-md-3  text-center" style="text-align: center;border: none">
+             <a href="" style="text-decoration: none;color: black">
+                 <h5>Medical Rating </h5>
+                 <img src="{% static 'rating.png' %}" width="50%" alt="NO image Available">
+                 <p>Top Ranked BBA Universities of Pakistan</p>
+             </a>
+
+         </div>
+         <div class="col-md-1"></div>
+         <div class="col-md-3  text-center" style="text-align: center;border: none">
+             <a href="" style="text-decoration: none;color: black">
+                 <h5>Medical Rating</h5>
+                 <img src="{% static 'rating.png' %}" width="50%" alt="NO image Available">
+                 <p>Top Ranked BBA Universities of Pakistan</p>
+             </a>
+
+</div>
+
+</div>
+
+
+
+
+ </div>
+
+ <br>
+ {% include 'Footer.html' %}
+
+ </body>
+
+ </html>

@@ -1,0 +1,51 @@
+{% include 'base.html' %}
+	<body>
+
+    <div class="container-fluid">
+        <div class="row">
+		<div class="col-md-12 text-center">
+			<h1 class="" style="margin-top: 2.5%;margin-bottom: 2.5%;font-size: 2em">Register</h1>
+			<div style=";margin-top: 2%" class=" ">
+				<a class="coldzs  " style="text-decoration: none;" href="{% url 'administer:login' %}">Login</a>
+				<a  class="coldzs active" style="text-decoration: none;" href="{% url 'administer:regindex' %}" class="active">Register</a>
+			</div>
+            </div>
+            <div class="col-md-12" style="margin-top: 5%"></div>
+        <div class="col-md-4" >
+
+        </div>
+        <div class="col-md-8  ">
+            <form action="{% url 'administer:registeruser' %}" method="post" autocomplete="off">
+            {% csrf_token %}
+            <div class="form-group">
+                <label  class="contlabel" for="name">
+					Name:
+				</label>
+				<input type="text"class="form-control mt-0" name="uname" placeholder="Name" id="name" required>
+            </div>
+                <div class="form-group">
+				<label class="contlabel " for="username" >
+                    Username
+				</label>
+				<input type="text" name="username" class="form-control mt-0" placeholder="Username" id="username" pattern="[A-Za-z0-9]+" required>
+                </div>
+                <div class="form-group">
+				<label  class="contlabel"  for="password">
+                    Password:
+				</label>
+				<input type="password" class="form-control mt-0" name="password" placeholder="Password" id="password" minlength="10" required>
+                </div>
+                <div class="form-group">
+				<label  class="contlabel" for="email">
+                    Email:
+				</label>
+				<input type="email" class="form-control mt-0" name="email" placeholder="Email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                </div>
+                <div class="msg">{{ msg }}</div>
+				<input type="submit" class="btn btn-warning" value="Register">
+			</form>
+            </div>
+        </div>
+    </div>
+	</body>
+</html>

@@ -1,0 +1,135 @@
+ {% include 'base.html' %}
+
+ <script>
+     var name;
+
+     function showCommentSection(id) {
+
+         $(".CommSec").attr("hidden", true);
+         $('#' + id).attr("hidden", false);
+
+         $.ajax({
+             type: "POST",
+             url: "{{ url_for("showComment")}}",
+             data: {
+                 'data': id
+             },
+             success: function(data) {
+
+                 $(".containers").empty();
+                 var res = JSON.stringify(data).split(",");
+                 var length = res.length;
+                 for (var i = 0; i < length; i++) {
+                     if (i % 2 == 0) {
+                         name = res[i].replace("[[", "").replace('"', "").replace('"', "").replace("[", "").replace("]", "").replace("]", "");
+                         $(".containers").append("<h4 id=i+30>" + name + "</h4>");
+
+                     } else {
+                         comment = res[i].replace("[[", "").replace('"', "").replace('"', "").replace("[", "").replace("]", "").replace("]", "");
+                         $(".containers").append("<p >" + comment + "</p>");
+
+
+                     }
+                     console.log();
+                 }
+
+                 //console.log(res[10]);
+                 console.log(length)
+                 //console.log(res[3]);
+             },
+             error: function(error) {
+                 console.log(error);
+             }
+
+
+         });
+
+
+
+
+
+     }
+
+     function hideCommentSection(id) {
+         $('#' + id).attr("hidden", true)
+     }
+
+ </script>
+
+ <div class="container ">
+     <div class="row">
+         <div class="col-md-7 ask_sec">
+             <h5 class="ask_head">Ask & Answer:</h5>
+             <h5 class="ask_para">Pakistan's Educational Community</h5>
+
+         </div>
+
+         <div class="col-md-9 ask_ques">
+
+
+             <h5 class="ask_pro">Have Any Question or Need Guidance? Ask our Community</h5>
+             <form action="{{ url_for('Spost') }} " method="post">
+                 <input type="date" id="theDate" name="date" hidden>
+                 <textarea id="text" name="text" PLACEHOLDER="Ask Question"></textarea>
+                 <br>
+                 <button type="button" class="cancel" hidden>Cancel</button>
+
+                 <button type="submit" style="margin-bottom: 2%" class="ask" hidden>Ask</button>
+
+
+             </form>
+         </div>
+
+         <div class="col-md-9 ask_sec">
+             <a href="{{ url_for("Ask") }}" style="text-decoration: none" href="" class="ask_pro active">QA Section</a>
+
+         </div>
+         <div class="col-md-9 ask_ques">
+
+
+             {% for da in data %}
+
+
+             <div class="ask_posts">
+                 <h5>{{ da.0 }}</h5>
+                 <h5 style=";" class="Post">{{ da.1 }}</h5>
+                 <br>
+
+                 <button type="submit" name="Comment" style="margin-bottom: 2%" class="Comment" id="{{ da.2 +30 }}" onclick="showCommentSection({{ da.2 }}) ">Comment</button>
+
+                 <div class="CommSec" id="{{ da.2 }}" hidden>
+                     <form action="{{ url_for("insertComment")  }}" method="post">
+                         <br>
+                         <br>
+                         <!--Comment -->
+                         <input type="text" class="Coms" name="comm" placeholder=" Add Comment...">
+                         <!--Post_id-->
+                         <input type="text" name="post_id" value="{{ da.2 }}" hidden>
+
+                         <br>
+                         <button type="submit" class="AddComm" style="margin-left: 70%">Add</button>
+                         <button type="button" class="CaComm" onclick="hideCommentSection({{ da.2 }}) ">Cancel</button>
+                         <div class="containers"></div>
+
+
+                     </form>
+
+
+                 </div>
+             </div>
+             <br>
+             <br>
+             <br>
+
+             {% endfor %}
+
+
+             <p id="fade">{{ msg }}</p>
+
+         </div>
+
+
+
+     </div>
+ </div>
+ <h1> {{ postid }}</h1>

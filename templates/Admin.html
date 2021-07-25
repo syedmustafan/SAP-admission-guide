@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+
+
+
+
+</head>
+<body>
+
+    {% if session['admin_id'] %}
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a href="{{ url_for('home') }}" class="navbar-brand" style="color: crimson"><h4 style="margin-top: 4%">SAPS</h4></a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav" style="width: 60%">
+
+            <a href="{{ url_for('admin') }}" style="color: crimson;font-weight: bold"  class="nav-item nav-link ">Universities</a>
+                <a href="{{ url_for('adminstudents') }}"   class="nav-item nav-link">Students</a>
+
+            </div>
+             <div class="navbar-nav ml-auto" style="width: 15%">
+
+                 <a href="{{ url_for('adminlogout') }}"  class="nav-item nav-link">Logout</a>
+
+
+
+
+            </div>
+
+            </div>
+</div>
+    </nav>
+
+
+<div class="container-fluid" style="margin-top: 3%">
+    <div class="card card-body bg-light text-center">
+            <h4>Admin Section</h4>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 list">
+            <h4>Universities list <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#mymodal">Add University </button></h4>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success alert-dismissable" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">X</span>
+                </button>
+                {{ message }}
+                </div>
+
+
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+
+
+
+
+
+
+
+            <table style="margin-top: 2%" class="table table-striped">
+                <tr>
+                    <th>Ranking</th>
+                    <th>University</th>
+                    <th>city</th>
+                    <th>Department</th>
+                    <th>Fee</th>
+                    <th>Relative Score</th>
+                    <th>Action</th>
+                </tr>
+          {% if university  %}
+               {% for row in university %}
+               <tr>
+                <td>{{row.1}}</td>
+                <td>{{row.2}}</td>
+                <td>{{row.3}}</td>
+                <td>{{row.4}}</td>
+                <td>{{row.5}}</td>
+                <td>{{row.6}}</td>
+
+                <td>
+                      {% set  ids   =  row.0 %}
+                    <script>
+                        console.log({{ids}});
+                    </script>
+                    <a href="/update/{{ row.0 }}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#Editinfo{{ row.0 }}"><span class="glyphicon glyphicon-pencil
+">              </span></a>
+                    <a href="/UniDelete/{{ row.0 }}" class="btn btn-xs btn-danger" onclick="return confirm('Are you Sure To Delete')"><span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+               </tr>
+
+
+
+
+    <div id="Editinfo{{ row.0 }}" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title pull-left">Please Edit Data</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <form action="{{url_for('updateUni')}}" method="post">
+                        <input type="number" name="Update" value="{{ row.0 }}" hidden>
+                        <div class="form-group">
+                            <label >Ranking:</label>
+                            <input type="text" class="form-control" name="rank" value="{{ row.1 }}" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label >University:</label>
+                            <input type="text" class="form-control" name="uni" value="{{ row.2 }}" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label >city:</label>
+                            <input type="text" class="form-control" name="city" value="{{ row.3 }}" required>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label >Department:</label>
+                            <input type="text" class="form-control" name="dep" value="{{ row.4 }}" required>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label >Fee:</label>
+                            <input type="text" class="form-control" name="fee" value="{{ row.5 }}" >
+
+                        </div>
+                        <div class="form-group">
+                            <label >Relative Score:</label>
+                            <input type="text" class="form-control" step="0.01" value="{{ row.6 }}" name="RS" required>
+
+                        </div>
+
+                        <div class="form-group">
+                           <button type="submit" class="btn btn-primary">Add Data</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                </div>
+            </div>
+        {% endfor %}
+          {% endif %}
+        </table>
+        </div>
+    </div>
+ </div>
+    </div>
+
+    <div id="mymodal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title pull-left">Please Add Data</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url_for('administration') }}"  method="post">
+                        <div class="form-group">
+                            <label >Ranking:</label>
+                            <input type="number" class="form-control" name="rank" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label >University:</label>
+                            <input type="text" class="form-control" name="uni" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label >city:</label>
+                            <input type="text" class="form-control" name="city" required>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label >Department:</label>
+                            <input type="text" class="form-control" name="dep" required>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label >Fee:</label>
+                            <input type="text" class="form-control" name="fee" >
+
+                        </div>
+                        <div class="form-group">
+                            <label >Relative Score:</label>
+                            <input type="number" class="form-control" name="RS" step="0.01" required>
+
+                        </div>
+
+                        <div class="form-group">
+                           <button type="submit" class="btn btn-primary">Add Data</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+    {% else %}
+        <div class="container-fluid">
+            <div class="row">
+           <div class="col-md-12 text-center">
+			<h1 style="margin-top: 5%;margin-bottom: 1.0%;font-size: 2em">Admin Login Section</h1>
+
+           </div>
+            <div class="col-md-12" style="margin-top: 2%"></div>
+            <div class="col-md-4" ></div>
+
+            <div class="col-md-8">
+			<form action="{{ url_for('admin') }}" method="post">
+                <div class="form-group">
+				<label class="contlabel" for="email">
+					Email:
+				</label>
+				<input type="text" class="form-control mt-0" name="email" placeholder="Username" id="email" required>
+                </div>
+                <div class="form-group">
+				<label class="contlabel for="pass">
+					Password:
+				</label>
+				<input type="password" class="form-control mt-0" name="pass" placeholder="Password" id="pass" required>
+                </div>
+				<div class="msg">{{ msg }}</div>
+				<input type="submit" class="btn btn-warning" value="Login">
+
+			</form>
+        </div>
+		</div>
+    {% endif %}
+    </div>
+</body>
+</html>

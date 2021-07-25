@@ -1,0 +1,55 @@
+
+{% load static %}
+{% include 'base.html' %}
+<link rel="stylesheet" href="{% static 'contact.css' %}">
+
+
+<script>
+    $('.msg').fadeOut(2000);
+</script>
+
+<body>
+
+    <div class="container-fluid" style="margin-top: 5%;">
+        <div class="row">
+            <div class="col-md-12 text-center" style="margin-bottom: 5%">
+                <h1>HAVE SOME QUESTIONS?</h1>
+                
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-4 text-center ">
+
+                <img src="{% static 'email.png' %}" width="90%" alt="No image">
+
+
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+                <form action="{{ "addQues" }}" method="post">
+                    <div class="form-group">
+                        <label class="contlabel" for="name">Full Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="contlabel" for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email"
+                               name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="contlabel" for="ques">Question:</label>
+                        <textarea PLACEHOLDER="Your Question" name="ques"  class="form-control" style="height: 100px" id="ques"  required>
+                        </textarea>
+                    </div>
+
+                    <button style="right: 90%" type="submit" class="btn btn-warning">Submit</button>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

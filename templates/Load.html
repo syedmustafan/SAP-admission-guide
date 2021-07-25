@@ -1,0 +1,79 @@
+{% load static %}
+{% include "base.html" %}
+
+<link rel="stylesheet" href="{% static 'profile.css'  %}">
+
+<script>
+    $(document).ready(function() {
+        // to load profile setting
+        $("#ProfileSet").click(function() {
+            $("#data").load("{{ "save") ");
+        });
+        // to load little detials
+        $("#Details").click(function () {
+        $("#data").load("{{ "details" }}");
+        });
+        // to load comments and posts
+        $('#acts').click(function () {
+            $("#data").load("{{ "showActivities" }}");
+        });
+        $("#addRev").click(function () {
+            $("#data").load("{{ "addReview" }}");
+        });
+
+    });
+
+    
+
+</script>
+
+<body >
+
+   <!-- <div  class="containers">
+        </div>-->
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 h-100 text-center" >
+                <div class="profileContent">
+                <img src="{% static 'Uimg.png' %}"  style="border-radius: 50px" width="40%" alt="">
+                    {% for cd in c %}
+                    <h4 style="color: white"> {{cd.name}}</h4>
+                    {% endfor %}
+                <br>
+                </div>
+                <a id="Details" style="color:white;">Details</a>
+                <br>
+                <br>
+                <a id="ProfileSet" style="color:white;">Profile Settings</a>
+                <br>
+                <br>
+                <a id="acts" style="color:white;">Activites</a>
+                <br>
+                <br>
+                <a id="addRev" style="color:white;">Add Reviews</a>
+                <br>
+                <br>
+                <a id="viewRev" style="color:white;">View Reviews</a>
+
+
+            </div>
+            <div class="col-md-10  pupdate "  >
+                <div id="data">
+                    {% if mesg %}
+                    <h1>{{ mesg }}</h1>
+                    {% endif %}
+                    <h1 style="text-align: center;color: crimson">Settings </h1>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+
+</html>

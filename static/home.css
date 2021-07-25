@@ -1,0 +1,370 @@
+
+
+
+.navbar-nav a{
+    margin-right: 5%;
+}
+
+.col-md-6 a{
+    color:crimson;
+    margin-right: 10%;
+     text-decoration: none;
+    font-size: 1.5em;
+}
+
+.active {
+
+    bottom: 0;
+    left: 0;
+
+    content: " ";
+    width: 100%;
+    border-bottom: 2px solid crimson;
+}
+
+.head th{
+    color:black;
+}
+
+
+
+
+.col-md-3{
+    border-style: solid;
+    border-color: silver ;
+    border-width: thin;
+}
+
+.col-md-3  {
+color: #2f3947;
+}
+
+ hr {
+
+    border: 0;
+  clear:both;
+  display:block;
+  width: 100%;
+  background-color:slategrey;
+  height: 1px;
+}
+
+
+.col-md-2{
+    color: #2f3947;
+}
+.hed{
+    color: crimson;
+}
+
+.search{
+    color: crimson;
+    margin: 2% 2% 0;
+    border: none;
+}
+a{
+color: crimson;
+    font-size: large;
+}
+
+#preloader {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+
+}
+
+#status{
+    width:200px;
+    height: 200px;
+    background: url(preloader.gif);
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+}
+.navbar{
+
+    background: #2f3947;
+}
+
+.nav-item {
+    color: white;
+    font-weight: normal;
+}
+.carousel-caption{
+    color: white;
+    left: 10%;
+    top: 10%;
+    font-family: 'Montserrat', sans-serif;
+
+
+
+}
+.carousel-caption a{
+    float: right;
+    color:black;
+    background: orangered;
+    border: orangered;
+    border-radius: 28px;
+    font-size: 13px;
+    margin: 0 6px;
+    padding: 12px 46px 12px 46px;
+
+
+}
+
+
+.rank1{
+    padding: 5%;
+    background: #0D1128;
+    color: white;
+    border: #0D1128;
+    margin-bottom: 0;
+
+}
+
+.rank2{
+    padding: 5%;
+    background: #FD5f00;
+    color: white;
+    border: #FD5f00;
+
+    margin-bottom: 0;
+
+}
+.rank1 .rank1{
+    border: none;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+
+}
+.cit{
+    font-size: 2em;
+}
+.navbar-toggler-icon {
+color: white;
+
+}
+
+.footer{
+    background-color: #232323;
+    border: none;
+    color: white;
+    width: 100%;
+
+}
+.footers{
+
+    border: none;
+    padding: 5%;
+    color: white;
+}
+
+.footers h4{
+    color: crimson;
+    margin-top: 15%;
+    font-size: 1.2em;
+
+}
+.tags {
+    color: crimson;
+    margin: 0;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+.footers2{
+     border: none;
+    padding: 5%;
+    color: white;
+    background-color:#232323 ;
+}
+.footers2 a{
+    margin-top: 10%;
+    margin-left: 5%;
+    font-size: 2em;
+    text-decoration: none;
+
+}
+
+.ask_head{
+    margin-top: 10%;
+    color:crimson;
+    display: inline;
+}
+
+.ask_para {
+
+    display: inline;
+    font-weight:lighter;
+
+}
+
+.ask_sec{
+    margin-top: 5%;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2em;
+
+}
+
+
+#text{
+    margin-top: 2%;
+    width: 100%;
+}
+
+.ask_ques{
+    margin-top: 2%;
+
+    border-style: ridge;
+
+
+
+}
+
+.ask{
+    float: right;
+    width: 10%;
+    background-color: #F1C40F ;
+    border: thin;
+    margin-right: 2%;
+    border-radius: 10px;
+    padding: 1%;
+
+
+
+
+}
+
+.cancel{
+float: right;
+    width: 10%;
+    background-color: #C0392B ;
+    border: thin;
+    margin-right: 2%;
+    border-radius: 10px;
+    padding: 1%;
+}
+
+
+#text{
+    width: 90%;
+    margin-bottom: 2%;
+}
+
+.ask_pro{
+    margin-top: 2%
+}
+
+.ask_pos{
+
+    padding: 2%;
+    width:10%;
+}
+.ask_pos2{
+    padding: 2%;
+    width: 90%;
+}
+
+.ask_posts{
+    padding-top: 4%;
+    padding-left: 2%;
+    border-style: ridge;
+    width: 100%;
+
+
+    font-weight: lighter;
+}
+.Comment{
+    margin-left: 85%;
+
+    width: 12%;
+    margin-bottom: 10%;
+    background-color: #F1C40F ;
+    border: thin;
+    margin-right: 2%;
+    border-radius: 10px;
+    padding: 1%;
+}
+.Coms{
+    margin-top: 4%;
+    width:90%;
+    border: black;
+    background: transparent;
+    text-decoration: none;
+    padding: 2%;
+    margin-bottom: 4%;
+}
+.AddComm{
+
+    width: 12%;
+    margin-bottom: 3%;
+    background-color: #F1C40F ;
+    border: thin;
+    margin-right: 2%;
+    border-radius: 10px;
+    padding: 1%;
+}
+.CaComm{
+
+    width: 12%;
+    margin-bottom: 3%;
+    background-color: #C0392B;
+    border: thin;
+    margin-right: 2%;
+    border-radius: 10px;
+    padding: 1%;
+}
+
+.Post{
+    margin: 0;
+    border-style: ridge;
+    width: 90%;
+    padding: 4%;
+    margin-bottom: 2%;
+}
+
+
+
+
+.profileContent{
+        margin-top: 10%;
+    }
+
+.pswds{
+    margin-top: 1.5%;
+    margin-left: 30%;
+
+}
+.passlabel{
+    color:crimson;
+     font-style: oblique;
+    font-weight: bolder;
+
+}
+.namelabel{
+    color:crimson;
+     font-style: oblique;
+    font-weight: bolder;
+    font-size: 2em;
+
+}
+.changeAttr{
+    color: crimson;
+}
+
+.coldz{
+    font-size: 1.7em;
+    margin-left: 5%;
+}
+.carousel_Text{
+    color: brown;
+}

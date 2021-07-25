@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='bootstrap.css') }}">
+    <script src="{{ url_for('static',filename="bootstrap.js") }}"></script>
+    <script src="{{ url_for('static',filename="jquery.js")  }}"></script>
+    <script src="{{ url_for('static',filename="preloader.js") }}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+    <script src="{{ url_for('static',filename="TextArea.js") }}"></script>
+
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='compare.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Prediction.css') }}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script>
+        $(".tarea").blur(function () {
+            var value = $(".tarea").val();
+            
+            if(value==""){
+                $('.stopsub').attr("disabled", true);
+            }
+            else {
+                $('.stopsub').attr("disabled", false);
+            }
+        });
+
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="manage">Add Review</h1>
+                <hr>
+
+
+                {% if existCheck %}
+                     <form action="{{ url_for('editReview') }}" method="post">
+                    <div>
+                         <div class="form-group">
+
+                        <label class="contlabel" for="ques">Edit Review </label>
+                        <textarea name="ques" class="form-control tarea" style="margin-top: 1%;height: 100px;width: 100%" id="ques" required>
+                            {{ existCheck1[1] }}
+                        </textarea>
+
+                        <button class="btn btn-warning stopsub" disabled > Edit Review</button>
+                {% else %}
+                    <form action="{{ url_for('submitReview') }}" method="post">
+                            <div>
+                        <h4 style="margin-bottom: 0;margin-bottom: 3%" >Note! You can add only one review  </h4>
+
+                         <div class="form-group">
+
+                        <label class="contlabel" for="ques">Add your valuable Remarks! </label>
+                        <textarea name="ques" class="form-control stopsub tarea" style="margin-top: 1%;height: 100px;width: 100%" id="ques" required>
+                        </textarea>
+
+                            <button class="btn btn-warning stopsub" type="submit" disabled >Submit Review</button>
+                         {% endif %}
+                    </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

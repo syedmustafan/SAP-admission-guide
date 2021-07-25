@@ -1,0 +1,87 @@
+{% include 'base.html' %}
+
+    <!--      Navbar Ends Here Now Rating Section Starts        -->
+    <!--Featuring Top Schools -->
+
+    <div class="container  " style="margin-bottom: 6%" >
+        <div class="row">
+             <div class="col-md-6 search">
+                 <h2>Search Your Desired University</h2>
+             </div>
+
+            <div class="col-md-5 search "    >
+                <form action="{{ 'selRating' }}" method="post">
+
+                 <select  id="sel" class="custom-select" name="city"   style="display: inline;width: 35%">
+
+
+                 <option  selected value="All">All Cities</option>
+                 <option value="Lahore">Lahore</option>
+                <option value="Karachi">Karachi</option>
+                <option value="Islamabad">Islamabad</option>
+                <option value="Faisalabad">Faisalabad</option>
+
+
+                </select>
+                <select  class="custom-select" name="deps"  style="display: inline;width: 35%;margin-left: 5%">
+                <option value="overall">Overall</option>
+                <option selected value="alldep">All Departments</option>
+                <option   value="Business">Buisness Studies</option>
+                <option value="Medical">Medical</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Arts">Arts</option>
+                <option value="CS">Computer Science</option>
+                </select>
+
+
+
+                <button type="submit" style="display: inline;margin-top: 0" class="btn btn-warning">Get</button>
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+<div class="container"  >
+    <div class="row">
+        <div class="col-md-12">
+            <table  class="table table-striped">
+                <tr class="head">
+                    <th>Ranking</th>
+                    <th>University</th>
+                    <th>City</th>
+                    <th>Department</th>
+                    <th>Expected Fee</th>
+                    <th>Relative Score</th>
+
+                </tr>
+                {% for row in mbaRate %}
+               <tr>
+                <td>{{row.Ranking}}</td>
+                <td>{{row.uniname}}</td>
+                <td>{{row.city}}</td>
+                <td>{{row.deps}}</td>
+                <td class="fee">{{row.fee}}</td>
+                <td>{{row.relScore}}</td>
+
+               </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+
+
+    </div>
+
+    </div>
+    </div>
+
+
+
+
+</body>
+</html>

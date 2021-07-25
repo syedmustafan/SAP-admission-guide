@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='bootstrap.css') }}">
+    <script src="{{ url_for('static',filename="bootstrap.js") }}"></script>
+    <script src="{{ url_for('static',filename="jquery.js")  }}"></script>
+    <script src="{{ url_for('static',filename="preloader.js") }}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+    <script src="{{ url_for('static',filename="TextArea.js") }}"></script>
+
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='compare.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Prediction.css') }}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+
+</head>
+
+<body >
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 text-center">
+                    <h1 class="changeAttr" style="font-style: oblique;">Activities</h1>
+            </div>
+        <hr style="width: 100%;padding: 0;margin: 0">
+        <div class="col-md-12 ">
+              <h1 class="changeAttr" style="font-style: oblique;">Comments</h1>
+
+        </div>
+
+        <div class="col-md-3" style="border: none">
+
+        </div>
+        <div class="col-md-8 ">
+             {% if comment %}
+                 {% for comments in comment %}
+                     <h3>{{ comments[0] }}</h3>
+                     <hr>
+                     <br>
+                {% endfor %}
+
+            {% else %}
+                <h3>You Dont have Any Comments</h3>
+            {% endif %}
+
+        </div>
+    <hr style="width: 100%;padding: 0;margin: 0">
+    <div class="col-md-12 ">
+              <h1 class="changeAttr" style="font-style: oblique;">Posts</h1>
+
+        </div>
+    <div class="col-md-3" style="border: none">
+
+    </div>
+    <div class="col-md-8">
+        {% if posts %}
+                 {% for post  in posts %}
+                     <h3>{{ post[0] }}</h3>
+                     <br>
+                {% endfor %}
+
+                 {% else %}
+                    <h3>You Dont have Any post </h3>
+                {% endif %}
+
+    </div>
+        <hr>
+    </div>
+</div>
+</body>
+</html>

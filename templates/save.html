@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='bootstrap.css') }}">
+    <script src="{{ url_for('static',filename="bootstrap.js") }}"></script>
+    <script src="{{ url_for('static',filename="jquery.js")  }}"></script>
+    <script src="{{ url_for('static',filename="preloader.js") }}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+    <script src="{{ url_for('static',filename="TextArea.js") }}"></script>
+
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='compare.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Prediction.css') }}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+
+</head>
+<script>
+    $(document).ready(function() {
+        var ps;
+        var oldPass;
+        var newPass;
+        var ConfPass;
+        var val;
+        $("#name").focus(function () {
+            $(".namelabel").attr("hidden", false);
+            $(".passlabel").attr("hidden", true);
+            $(".passlabel").attr("hidden", true);
+            $(".passlabel").attr("hidden", true);
+
+        });
+
+        $("#password").focus(function () {
+            $(".passlabel").attr("hidden", false);
+            $(".passlabel").attr("hidden", false);
+            $(".passlabel").attr("hidden", false);
+            $(".namelabel").attr("hidden", true);
+
+        });
+
+        $("#editname").click(function () {
+            //confirm("Are You Sure");
+
+
+        });
+        ps = $("#pd").text();
+        //console.log(ps);
+        
+        
+        $("#password").blur(function (e) {
+            oldPass = $("#password").val();
+
+
+            //console.log(oldPass);
+            //console.log(ps)
+            if(oldPass==ps){
+                val = true;
+            }
+            else{
+                val=false;
+                alert("Password Mismatch");
+            }
+
+        });
+        $("#newpass").blur(function () {
+             newPass = $("#newpass").val();
+
+        });
+        $("#Coldpass").blur(function () {
+        ConfPass = $("#Coldpass").val();
+        if(ConfPass==newPass){
+            val = true;
+        }
+        else{
+            val= false;
+        }
+        if(val){
+            alert("Hello");
+            $(".bts").prop("disabled",false);
+
+        }
+        });
+
+        console.log(ConfPass);
+
+    });
+    
+</script>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                    <h4>This page is for Customization  </h4>
+            </div>
+
+            <hr style="width: 100%;padding: 0;margin: 0">
+            <br>
+            <div class="col-md-8 ">
+                <h3 class="changeAttr" style="font-style: oblique;">Edit Name</h3>
+            </div>
+            <div class="col-md-6 pswds">
+                <br>
+
+                <label class="namelabel" style="font-size: 1rem"  hidden for="password">New Name:</label>
+                <br>
+                <form action="{{ url_for("editName") }}", method="post">
+                <input   id="name" name="name" type="text" style=" width:40%" class="  form-group" placeholder="Edit Username">
+                <button id="editname"  class="btn btn-warning bts"  type="submit" >Change Name</button>
+            </form>
+
+            </div>
+
+
+            <br>
+            <br>
+            <hr style="width: 100%;padding: 0;margin: 0">
+            <div class="col-md-8">
+                <h3 class="changeAttr" style="font-style: oblique;">Edit Password</h3>
+            </div>
+
+            <div class="col-md-8 pswds">
+                <br>
+                <form action="{{ url_for('changePass')  }}" method="post">
+
+                <label class="passlabel" hidden for="password"  required>Old Password:</label>
+                <br>
+
+                <input   id="password" type="password" style=" width:30%" aria-invalid="oldp" class="  form-group" placeholder="Old Password" required>
+                <br>
+
+                <label class="passlabel" hidden for="oldpass"  id="newp">New Password:</label>
+                <br>
+                <input   id="newpass" type="password" name="newP" style=" width:30%" class="  form-group" placeholder="New Password" required>
+
+                <br>
+
+                <label class="passlabel" hidden for="Coldpass" id="conp">Confirm Password:</label>
+                <br>
+                <input   id="Coldpass" type="password" name="confP" style=" width:30%" class="  form-group" placeholder="Confirm Password" required>
+                <button id="editpswd" style="margin-left: 70%" class="btn btn-warning bts"  type="submit"   >Change Password</button>
+
+                </form>
+
+            </div>
+            <div class="col-md-10">
+
+            </div>
+
+                        <hr style="width: 100%;padding: 0;margin: 0">
+
+
+
+
+        </div>
+
+    </div>
+<h1 id="pd" hidden>{{ pswd[0] }}</h1>
+</body>
+
+</html>
