@@ -37,7 +37,7 @@ conda
 #conda-build==3.17.8
 conda-build
 #conda-package-handling
-conda-verify
+#conda-verify
 cryptography
 cycler
 decorator
