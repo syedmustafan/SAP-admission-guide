@@ -85,7 +85,7 @@ kiwisolver==1.1.0
 lazy-object-proxy==1.4.2
 libarchive-c==2.8
 MarkupSafe==1.1.1
-matplotlib==3.0.2
+#matplotlib==3.1.1
 #matplotlib
 #mccabe
 #mccabe==0.6.1
