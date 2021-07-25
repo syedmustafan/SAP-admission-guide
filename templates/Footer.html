@@ -25,7 +25,7 @@
             <br>
             <a href="{% url 'main:home' %}" class="tags"><p class="tags">&rarr;  Home</p></a>
             <br>
-            <a href="#" class="tags"><p class="tags">&rarr; Contact Us</p></a>
+            <a href="{% url 'administer:contact' %}" class="tags"><p class="tags">&rarr; Contact Us</p></a>
             <br>
             <a href="{% url 'main:about' %}" class="tags"><p class="tags">&rarr; About Us</p></a>
             {% if request.session.loggedin %}
