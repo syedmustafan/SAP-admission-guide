@@ -3,7 +3,6 @@ from main.models import Account
 from django.db.models import Q
 from django.core.mail import send_mail
 from django.conf import settings
-from administer.models import Contact
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -30,10 +29,7 @@ def logout(request):
     return render(request, 'home.html')
 
 def regindex(request):
-    return render(request, 'register.html')
-
-def contact(request):
-    return render(request, 'Contact.html')     
+    return render(request, 'register.html')   
 
 def registeruser(request):
     cont = {}

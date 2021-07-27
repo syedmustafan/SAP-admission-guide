@@ -21,5 +21,13 @@ class UniRank(models.Model):
     def __str__(self):
         return self.uniname + " (" + self.deps + ") " + self.Ranking 
 
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    question = models.CharField(max_length=400)
+
+    def __str__(self):
+        return self.email        
+
 
 

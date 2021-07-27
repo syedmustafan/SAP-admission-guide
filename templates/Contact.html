@@ -25,7 +25,8 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-4">
-                <form action="{% url "administer:addQues" %}" method="post">
+                <form action="{% url 'main:adding' %}" method="POST">
+                {% csrf_token %}
                     <div class="form-group">
                         <label class="contlabel" for="name">Full Name:</label>
                         <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required>

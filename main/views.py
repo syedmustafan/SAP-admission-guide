@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from .models import UniRank
+from django.core.mail import send_mail
+from django.conf import settings
+from .models import Contact, UniRank
 from . import predictions
 def home(request):
     return render(request, 'home.html')
@@ -22,6 +24,27 @@ def compare(request):
         "res": unirank
     }
     return render(request, 'Compare.html', context=context)
+
+def contactus(request):
+    return render(request, 'Contact.html')  
+
+def addques(request):
+    name = request.POST['name']
+    email = request.POST['email']
+    ques =request.POST['ques']
+    if request.method=="POST":
+        Contact.objects.create(name=name, email=email, question=ques)
+        subject = 'Query Recorded for SAP Portal'
+        message = "Thank you for contact us. We will get back to you shortly regarding your query/suggestion"
+        send_mail(
+            subject,
+            message,
+            settings.EMAIL_HOST_USER,
+            [email],
+            fail_silently=False
+            )
+        quest_dict = {"msg": "Query Has Been Recorded"}
+        return render(request, 'Contact.html', context=quest_dict)
 
 def compareRes(request):
     clicked = request.POST['data']
